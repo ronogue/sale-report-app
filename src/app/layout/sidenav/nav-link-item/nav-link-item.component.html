@@ -1,0 +1,9 @@
+<a
+    mat-list-item
+    [routerLink]="[item.route]"
+    routerLinkActive="text-indigo-700 bg-white/12 font-bold"
+    class="flex gap-2 items-center rounded-lg hover:bg-white/12 p-2 text-sky-50 transition-colors duration-150"
+>
+    <mat-icon [svgIcon]="item.icon"></mat-icon>
+    <span>{{ item.title }}</span>
+</a>
