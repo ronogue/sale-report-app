@@ -1,0 +1,13 @@
+<mat-sidenav-container class="h-screen">
+    <mat-sidenav #sidenav [mode]="'side'" [opened]="isDesktop" class="w-64 shadow-xl">
+        <app-sidenav class="h-full"></app-sidenav>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="flex flex-col">
+        <app-header (toggleSidenav)="sidenav.toggle()"></app-header>
+
+        <main class="grow p-4 md:p-6 overflow-y-auto">
+            <router-outlet />
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>
