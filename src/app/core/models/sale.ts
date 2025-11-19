@@ -1,7 +1,10 @@
-interface Sale {
+import { Product } from './product';
+
+export interface Sale {
     id: number;
     productId: number;
     brandId: number;
-    date: string;
+    categoryId: number;
+    date: Date;
     amount: number;
 }

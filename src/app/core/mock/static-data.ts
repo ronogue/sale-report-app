@@ -1,6 +1,7 @@
 import { Brand } from '../models/brand';
 import { Category } from '../models/category';
 import { Product } from '../models/product';
+import { Sale } from '../models/sale';
 
 export const categories: Category[] = [
     { id: 1, name: 'Comida' },
@@ -30,29 +31,31 @@ function generateSales(): Sale[] {
     const sales: Sale[] = [];
     let id = 1;
 
-    brands.forEach((brand) => {
-        for (let monthOffset = 0; monthOffset < 12; monthOffset++) {
-            const date = new Date();
-            date.setMonth(date.getMonth() - monthOffset);
+    const baseYear = new Date().getFullYear();
 
-            const entries = Math.floor(Math.random() * 10) + 5;
+    categories.forEach((category) => {
+        const categoryProducts = products.filter((p) => p.categoryId === category.id);
 
-            for (let i = 0; i < entries; i++) {
-                sales.push({
-                    id: id++,
-                    productId: brand.productId,
-                    brandId: brand.id,
-                    date: new Date(
-                        date.getFullYear(),
-                        date.getMonth(),
-                        Math.floor(Math.random() * 28) + 1
-                    )
-                        .toISOString()
-                        .split('T')[0],
-                    amount: Number((Math.random() * 500 + 50).toFixed(2)),
-                });
-            }
-        }
+        categoryProducts.forEach((product) => {
+            const productBrands = brands.filter((b) => b.productId === product.id);
+
+            productBrands.forEach((brand) => {
+                for (let month = 0; month < 12; month++) {
+                    const entries = 5 + Math.floor(Math.random() * 10);
+
+                    for (let i = 0; i < entries; i++) {
+                        sales.push({
+                            id: id++,
+                            productId: product.id,
+                            brandId: brand.id,
+                            categoryId: category.id,
+                            date: new Date(baseYear, month, Math.floor(Math.random() * 28) + 1),
+                            amount: Number((Math.random() * 500 + 50).toFixed(2)),
+                        });
+                    }
+                }
+            });
+        });
     });
 
     return sales;

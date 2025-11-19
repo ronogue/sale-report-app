@@ -1,0 +1,37 @@
+<div class="flex flex-col gap-1" [formGroup]="form">
+    <div class="flex gap-4">
+        <mat-form-field subscriptSizing="dynamic" appearance="outline" class="flex-1">
+            <mat-label>Categoria:</mat-label>
+
+            <mat-select formControlName="categoryId">
+                @for (category of viewCategories; track category) {
+                <mat-option [value]="category.id">{{ category.name }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field subscriptSizing="dynamic" appearance="outline" class="flex-1">
+            <mat-label>Produto:</mat-label>
+
+            <mat-select formControlName="productId">
+                @for (product of viewProducts; track product) {
+                <mat-option [value]="product.id">{{ product.name }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field subscriptSizing="dynamic" appearance="outline" class="flex-1">
+            <mat-label>Marca:</mat-label>
+
+            <mat-select formControlName="brandId">
+                @for (brands of viewBrands; track brands) {
+                <mat-option [value]="brands.id">{{ brands.name }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <h5 class="text-center text-2xl">Sales By Month for:</h5>
+
+    <app-line-chart [salesData]="chartData"></app-line-chart>
+</div>

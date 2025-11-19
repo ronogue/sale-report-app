@@ -50,3 +50,7 @@ body {
     --side-nav-bg: #2c3e50;
     --app-header-bg: #3289c1;
 }
+
+.mdc-notched-outline__notch {
+    border-right: none;
+}

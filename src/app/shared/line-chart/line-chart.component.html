@@ -1,0 +1,13 @@
+@if (salesData.length > 0) {
+<div id="chart">
+    <apx-chart
+        [series]="chartOptions.series!"
+        [chart]="chartOptions.chart!"
+        [xaxis]="chartOptions.xaxis!"
+        [stroke]="chartOptions.stroke!"
+        [tooltip]="chartOptions.tooltip!"
+    ></apx-chart>
+</div>
+} @else {
+<p>Selecione os filtros para visualizar o gráfico.</p>
+}
