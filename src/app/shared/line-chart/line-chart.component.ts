@@ -56,6 +56,7 @@ export class LineChartComponent {
             },
             tooltip: {
                 x: { format: 'dd/MM/yy' },
+                y: { formatter: (v) => v.toLocaleString('pt-BR') },
             },
         };
     }
